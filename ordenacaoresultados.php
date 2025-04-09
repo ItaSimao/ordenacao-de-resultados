@@ -17,13 +17,12 @@ try {
 
 ?>
 <form method="GET">
-    <select name="ordem">
+    <select name="ordem" onchange="this.form.submit()">
 <option></option>
 <option value="nome">Nome</option>
 <option value="idade">Idade</option>
 </select>
 </form>
-
 
 <table border="1" width="400">
     <tr>
