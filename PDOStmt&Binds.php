@@ -20,6 +20,7 @@ $sql = $pdo->prepare($sql);
 $sql->bindValue(':novonome', $nome);
 $sql->bindValue(':id', $id);
 $sql->execute();
+$result = $sql->fetchAll(PDO::FETCH_ASSOC);
 
 echo "Atualizado com sucesso!";
 } catch (PDOException $e) {
