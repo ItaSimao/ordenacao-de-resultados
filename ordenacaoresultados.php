@@ -29,6 +29,7 @@ if (isset($_GET['ordem']) && empty($_GET['ordem']) == false) {
         <option></option>
         <option value="nome" <?php echo($ordem=="nome")?'selected="selected"':"";  ?> >Nome</option>
         <option value="idade"<?php echo($ordem=="idade")?'selected="selected"':""; ?> >Idade </option>
+        <option value="email"<?php echo($ordem=="email")?'selected="selected"':""; ?> >Email</option>
     </select>
 </form>
 
