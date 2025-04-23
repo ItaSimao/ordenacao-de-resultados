@@ -23,6 +23,17 @@ if (isset($_GET['ordem']) && empty($_GET['ordem']) == false) {
     $sql = "SELECT * FROM usuarios";
 }
 
+$stmt = $pdo->prepare($sql);
+$stmt->execute();
+$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+if ($stmt->rowCount() > 0) {
+    foreach ($result as $usuarios) {
+        echo $usuarios['nome'] . "<br>";
+    }
+} else {
+    echo "Nenhum usuário encontrado";
+}
+
 ?>
 <form method="GET">
     <select name="ordem" onchange="this.form.submit()">
