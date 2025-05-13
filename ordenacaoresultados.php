@@ -17,7 +17,13 @@ try {
 
 if (isset($_GET['ordem']) && empty($_GET['ordem']) == false) {
     $ordem = addslashes($_GET['ordem']);
-    $sql = "SELECT * FROM usuarios ORDER BY " . $ordem;
+    $sql = "SELECT * FROM usuarios ORDER BY " . $ordem . " ASC";
+} elseif (isset($_GET['ordem']) && empty($_GET['ordem']) == true) {
+    $ordem = addslashes($_GET['ordem']);
+    $sql = "SELECT * FROM usuarios ORDER BY " . $ordem . " DESC";
+} elseif (isset($_GET['ordem']) && $_GET['ordem'] == '') {
+    $ordem = '';
+    $sql = "SELECT * FROM usuarios";
 } else {
     $ordem = '';
     $sql = "SELECT * FROM usuarios";
@@ -29,6 +35,8 @@ $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 if ($stmt->rowCount() > 0) {
     foreach ($result as $usuarios) {
         echo $usuarios['nome'] . "<br>";
+        echo $usuarios['idade'] . "<br>";
+        echo $usuarios['email'] . "<br>";
     }
 } else {
     echo "Nenhum usuário encontrado";
@@ -41,6 +49,7 @@ if ($stmt->rowCount() > 0) {
         <option value="nome" <?php echo($ordem=="nome")?'selected="selected"':"";  ?> >Nome</option>
         <option value="idade"<?php echo($ordem=="idade")?'selected="selected"':""; ?> >Idade </option>
         <option value="email"<?php echo($ordem=="email")?'selected="selected"':""; ?> >Email</option>
+        <option value="data_nascimento"<?php echo($ordem=="data_nascimento")?'selected="selected"':""; ?> >Data de Nascimento</option>
     </select>
 </form>
 
@@ -59,6 +68,8 @@ if ($stmt->rowCount() > 0) {
             <tr>
                 <td><?php echo $usuarios['nome']; ?></td>
                 <td><?php echo $usuarios['idade']; ?></td>
+                <td><?php echo $usuarios['email']; ?></td>
+                <td><?php echo $usuarios['data_nascimento']; ?></td>
             </tr>
             <?php
         endforeach;
