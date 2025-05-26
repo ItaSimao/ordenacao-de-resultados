@@ -75,6 +75,8 @@ if ($stmt->rowCount() > 0) {
         endforeach;
     } else {
         echo "<tr><td colspan='2'>Nenhum usuário encontrado</td></tr>";
+        echo "<tr><td colspan='2'>Nenhum usuário encontrado</td></tr>";
+        echo "<tr><td colspan='2'>Nenhum usuário encontrado</td></tr>";
     }
     ?>
 </table>
